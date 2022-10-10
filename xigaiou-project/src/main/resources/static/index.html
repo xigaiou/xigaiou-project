@@ -1,0 +1,526 @@
+<!--
+<title>title 元素的内容会显示在浏览器的标题栏中。</title>
+<p>段落元素由 p 标签定义。</p> 
+<h1 align="center">align="center"使得标题居中</h1>
+<hr/>标签定义水平线
+<body bgcolor="skyblue">可以使得背景呈蓝色
+
+文本格式化标签
+    <b>	    定义粗体文本。
+        <big>	定义大号字。HTML5 中不支持 <big> 标签。请用 CSS 代替
+    <em>	定义着重文字。
+    <i>	    定义斜体字。
+    <small>	定义小号字。
+    <strong>定义加重语气。
+    <sub>	定义下标字。
+    <sup>	定义上标字。
+    <ins>	定义插入字。
+    <del>	定义删除字。
+
+引用、引用和术语定义
+    <abbr>	    定义缩写。
+        <acronym>	定义首字母缩写。定义和用法 HTML 5 不支持 acronym 标签。 请使用 abbr 标签代替它
+    <address>	定义地址。
+    <bdo>	    定义文字方向。
+        <bdo dir="rtl">
+            Here is some Hebrew text
+        </bdo>
+    <blockquote>定义长的引用。
+        <blockquote>
+            使用 blockquote 元素的话，浏览器会插入换行和外边距。
+        </blockquote>
+    <q>	        定义短的引用语。
+        <q>
+            q 元素不会有任何特殊的呈现,只是单纯加上“ ”两个双引号
+        </q>
+    <cite>	    定义引用、引证。
+    <dfn>	    定义一个定义项目。
+
+计算机输出标签
+    <code>	定义计算机代码。
+    <kbd>	定义键盘码。
+    <samp>	定义计算机代码样本。
+        <tt>	定义打字机代码。HTML5 中不支持<tt>
+    <var>	定义变量。
+    <pre>是预格式文本,它保留了空格和换行。</pre>
+
+<address>
+    用来说明地址，比如作者：<a href="mailto:xigaiou@zheshishaya.com">xigaiou</a>
+</address>
+
+如果把链接的 target 属性设置为 "_blank"，该链接会在新窗口中打开。
+<a href="https://zh.moegirl.org.cn/初音未来" target="_blank">MIKU</a>
+
+本例演示如何跳出框架，假如你的页面被固定在框架之内。
+<a href="/index.html" target="_top">请点击这里！</a> 
+
+创建电子邮件链接
+<a href="mailto:someone@microsoft.com?subject=Hello%20again">发送邮件</a>
+
+垂直框架
+<frameset cols="25%,50%,25%">
+  <frame src="/example/html/frame_a.html">
+  <frame src="/example/html/frame_b.html">
+  <frame src="/example/html/frame_c.html">
+</frameset>
+水平框架
+<frameset rows="25%,50%,25%">
+  <frame src="/example/html/frame_a.html">
+  <frame src="/example/html/frame_b.html">
+  <frame src="/example/html/frame_c.html">
+</frameset>
+混合框架
+<frameset rows="50%,50%">
+    <frame src="/example/html/frame_a.html">
+    <frameset cols="25%,75%">
+        <frame src="/example/html/frame_b.html">
+        <frame src="/example/html/frame_c.html">
+    </frameset>
+</frameset>
+含有noresize="noresize"属性的框架结构可以调节尺寸
+<frame src="/example/html/frame_a.html" noresize="noresize" />
+
+创建内联框架（HTML 页中的框架）。
+<iframe src="C:\Users\xigaiou\Desktop\test_miku.jpg"></iframe>
+
+跳转至框架内的一个指定的节,这里跳转至C10处
+<frame src="/example/html/link.html#C10">
+
+两个框架。左侧的导航框架包含了一个链接列表，这些链接将第二个框架作为目标。
+第二个框架显示被链接的文档。导航框架其中的链接指向目标文件中指定的节。
+<frameset cols="180,*">
+<frame src="/demo/html/content.html">
+<frame src="/example/html/link.html" name="showframe">
+</frameset>
+
+表
+<h4>带有普通的边框：</h4>  
+<table border="1"> 普通的边框, border="8"带有粗的边框,
+     border="15"带有很粗的边框, border="0"或不写border没有边框
+<tr>
+  <td>First</td>
+  <td>Row</td>
+</tr>   
+<tr>
+  <td>Second</td>
+  <td>Row</td>
+</tr>
+</table>
+
+表头
+<table border="8">
+    <tr>
+        <th>姓名</th>
+        <th>编号</th>
+        <th>电话</th>
+    </tr>
+    <tr>
+        <td>"小野さん"</td>
+        <td>1</td>
+        <td>12345</td>
+    </tr>
+</table>
+
+总结一下th是表头，td是表内的元素
+
+使用 "&nbsp;" 处理没有内容的单元格。
+
+<th colspan="2">电话</th>横跨两列的单元格
+
+<th rowspan="2">电话</th>横跨两行的单元格
+
+<ul>列表
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>菠萝</li>
+</ul>
+
+使用 Cell padding 来创建单元格内容与其边框之间的空白
+<table border="1" cellpadding="10">
+
+使用 Cell spacing 增加单元格之间的距离（边框）
+<table border="1" cellspacing="10">
+
+表格的背景颜色
+<table border="1" bgcolor="red">
+表格的背景图像
+<table border="1" background="/i/eg_bg_07.gif">
+单元格的背景颜色或背景图像
+<td bgcolor="red">
+
+HTML5 不支持 align 属性，可以使用 CSS 代替。
+
+表格式样
+<table frame="box">四边
+<table frame="above">上边
+<table frame="below">下边
+<table frame="hsides">上下
+<table frame="vsides">左右
+
+列表
+无序列表
+<ul type="disc"> 实心圆（默认） type="circle"空心圈 type="square"方块
+  <li>咖啡</li>
+  <li>茶</li>
+  <li>牛奶</li>
+</ul>
+
+有序列表
+<ol start="50" type="A">字母 type="a"小写字母 type="I"罗马字母 type="i"小写罗马字母
+  <li>咖啡</li>
+  <li>牛奶</li>
+  <li>茶</li>
+</ol>
+
+嵌套演示
+<ul type='square'>
+  <li>咖啡</li>
+  <li>茶
+    <ul>
+    <li>红茶</li>
+    <li>绿茶</li>
+    </ul>
+  </li>
+  <li>牛奶</li>
+</ul>
+
+定义
+<dl>
+   <dt>计算机</dt>
+   <dd>用来计算的仪器 ... ...</dd>
+   <dt>显示器</dt>
+   <dd>以视觉方式显示信息的装置 ... ...</dd>
+</dl>
+
+表单
+<form>
+    用户：
+    <input type="text" name="user">
+    <br />
+    密码：
+    <input type="password" name="password">
+</form>
+
+复选框
+<form>
+    <input type="checkbox" name="Car">
+</form>
+
+单选框
+<form>
+男性：
+<input type="radio" checked="checked" name="Sex" value="male" />
+<br />
+女性：
+<input type="radio" name="Sex" value="female" />
+</form>
+<p>当用户点击一个单选按钮时，该按钮会变为选中状态，其他所有按钮会变为非选中状态。</p>
+
+简单的下拉列表
+<form>
+    <select name="Manager">
+        <option value="Manager">Manager</option>
+        <option value="Visitor" selected="selected">Visitor</option>预选值selected
+    </select>
+</form>
+
+文本域
+描述信息：<textarea name="description">此处是描述信息</textarea>
+
+创建按钮
+<input type="button" value="登录">
+
+在数据周围绘制一个带标题的框。
+<fieldset>
+    <legend>カバン</legend>
+    お金：<input type="text" />
+    ダイヤモンド：<input type="text" />
+</fieldset>
+
+真提交
+<form action="https://www.bilibili.com/">
+<input type="submit" value="真登录">
+
+插入图像
+<p>
+<img src="C:/Users/xigaiou/Desktop/お母さん.jpg" width="128" height="128" />
+</p>
+
+图像背景
+<body background="C:/Users/xigaiou/Desktop/bb2.jpg">
+
+排列图片
+<p>
+    图像 <img src="C:/Users/xigaiou/Desktop/bb2.jpg" align="bottom"> 在文本中
+</p>
+<p>
+    图像 <img src="C:/Users/xigaiou/Desktop/bb2.jpg" align="middle"> 在文本中
+</p>
+<p>
+    图像 <img src="C:/Users/xigaiou/Desktop/bb2.jpg" align="top"> 在文本中
+</p>
+<p>
+    请注意，bottom 对齐方式是默认的对齐方式。
+</p>
+
+浮动图像
+<p>
+    图像 <img src="C:/Users/xigaiou/Desktop/bb2.jpg" align ="left"> 在文本左
+</p>
+<p>
+    图像 <img src="C:/Users/xigaiou/Desktop/bb2.jpg" align ="right"> 在文本右
+</p>
+
+图像链接
+<p>
+把图像作为链接来使用
+<a href="/example/html/lastpage.html">
+<img border="0" src="/i/eg_buttonnext.gif" />
+</a>
+</p>
+
+
+创建图像映射
+<img
+src="/i/eg_planets.jpg"
+border="0" usemap="#planetmap"
+alt="Planets" />
+
+<map name="planetmap" id="planetmap">
+
+<area
+shape="circle"
+coords="180,139,14"
+href ="/example/html/venus.html"
+target ="_blank"
+alt="Venus" />
+
+<area
+shape="circle"
+coords="129,161,10"
+href ="/example/html/mercur.html"
+target ="_blank"
+alt="Mercury" />
+
+<area
+shape="rect"
+coords="0,0,110,260"
+href ="/example/html/sun.html"
+target ="_blank"
+alt="Sun" />
+
+</map>
+
+
+图像链接
+<a href="https://www.baidu.com/">
+<img src="/i/eg_planets.jpg" ismap />
+</a>
+
+HTML中的样式
+<style type="text/css">
+    h1{color:cadetblue}
+    p {color:cadetblue}
+</style>
+
+没有下划线的链接
+<a href="#top" style="text-decoration:none">直达顶部</a>
+
+加上这个能使所有的链接自带打开新标签的设置
+<base target="_blank" />
+
+meta 属性标识了创作者和关键词
+<meta name="xigaiou" content="miku_introduction">
+<meta name="keywords" content="MIKU">
+
+重定向（ 5 秒内被重定向到新的地址）
+<meta http-equiv="Refresh" content="5;url=https://www.bilibili.com/" />
+
+不支持 JavaScript 的浏览器将显示 noscript 元素中的文本
+<script type="text/javascript">
+    document.write("Hello World!")
+</script>
+<noscript>
+    Sorry, your browser does not support JavaScript!
+</noscript>
+
+-->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh">
+    
+    <head>
+        <title>MIKU大法好</title>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            h1{color:cadetblue}
+            p {color:cadetblue}
+        </style>
+        <meta name="xigaiou" content="miku_introduction">
+        <meta name="keywords" content="MIKU">
+        <link rel="icon" href="/static/images/favicon.ico"/>
+    </head>
+    <body>
+        <a name="top"></a>
+        <h1 align="center">初音未来</h1>
+        <h2>简介</h2>
+        <p><b>初音未来</b>(日语:<i>初音(はつね)ミク</i>,平文式罗马字:<sub>Hatsune Miku</sub>)<br/>
+            是Crypton Future Media株式会社企划,开发,贩售,使用<sup>YAMAHA</sup><br/>
+            的VOCALOID引擎和Crypton自主研发的NT歌声合成引擎的声音库软<br/>
+            件及其拟人化形象。
+        </p>
+        <p>初音未来与镜音铃·连、巡音流歌、MEIKO、KAITO共称为“Piapro角<br/>
+            色”,或“初音未来和她的伙伴们”。初音未来也是Crypton“角色主<br/>
+            唱系列”(Character Vocal Series)的第一作,代号为CV01。
+        </p>  
+        <p>初音未来的日文及英文简称分别为<small>ミク</small>及<em>Miku</em>(两者读音相同),而中文<br/>
+            社区则经常简称为“<strong>初音</strong>”。
+        </p>
+        <p>“初音未来”“初音ミク”“雪未来”“樱花未来”“赛车未来”等为<br/>
+            <ins>Crypton</ins>在中国大陆地区的注册商标。
+        </p>
+        <p>2014年末至今(2022年5月),上海新创华文化发展有限公司是初音未来<br/>
+            等Crypton旗下虚拟歌姬角色形象、IP在中国大陆地区的版权总代理。<br/>
+        </p>
+        <p>自发行以来,初音未来、Crypton公司与广大创作者和受众们逐渐建立着<br/>
+            “向未来无限延续的「初音未来」创作文化”。
+        </p>
+        <p>
+            <a href="https://zh.moegirl.org.cn/初音未来" target="_blank">
+            <img border="0" src="C:\Users\xigaiou\Desktop\test_miku.jpg" width="200" height="200" />
+            </a>
+        </p>
+        <hr/>
+        <h2>命名</h2>
+        <p>早在2007年6月30日或之前,初音未来的形象就已经公开,但是当时并没有<br/>
+            姓氏,而是称呼为ミク。2007年7月12日,公开了姓氏“初音”和名字ミク<br/>
+            的汉字写法“未来”。
+        </p>
+        <blockquote>“初音”有“初次的声音”（日语：初めての音）的意思,而这里的“声音”<br/>
+            指的是歌声。同时,“初音”也象征着“出发点”,而“未来”象征着<br/>
+            VOCALOID所代表的未来的音乐的可能性。
+        </blockquote>
+        <hr/>
+        <h2>音源</h2>
+        <p>初音未来(V2)的音源样本由声优藤田咲提供。这一选择是在考虑过近五百份<br/>
+            声音样本后作出的,因为藤田咲的声音“清楚而可爱”<br/>
+            (分かりやすくかわいらしかった)。在录音时,藤田咲以“可爱的偶像声线”<br/>
+            进行录音,共花费两天时间,每天三小时,录音内容是无意义的罗马字组合<br/>
+            (声库录音表)。音源制作的演示乐曲让藤田咲十分惊喜,认为十分可爱。<br/>
+            实际上,音源合成输出的声音与藤田咲本人的声音并不相似。<br/>
+            <del>真·魔改,虽然藤田咲本人还是能勉强模仿出来的</del><br/>
+            (这一点在后来奠定了初音未来歌声的“角色性”,致使Crypton团队在之后的<br/>
+            新版本初音未来声库制作过程中,都会投入大量时间和精力去适应新版引擎的<br/>
+            合成细节变化,尝试保持V2声库的原始声音特质)
+        </p>
+        <q>
+            初音未来Append(V2),V3,V3 English,V4X,V4 English,V4 中文版、<br/>
+            NT等声库也均由藤田咲提供声音。
+        </q>
+        <iframe src="C:\Users\xigaiou\Desktop\test_miku2.jpg" width="500" height="500"></iframe>
+        <hr/>
+        <p>
+            <abbr title="MikuMikuDance">MMD</abbr>
+        </p>
+        <pre>
+            MIKU大法好!
+                MIKU大法好!
+                    MIKU大法好!
+        </pre>
+        <bdo dir="rtl">
+            MIKU大法好!
+        </bdo>
+        <br/>
+        <a href="#top" style="text-decoration:none">直达顶部</a>
+
+        <h3>一行三列的表：</h3>
+        <table border="8" cellpadding="10" cellspacing="5" 
+            background="C:\Users\xigaiou\Desktop\test_miku3.jpg" frame="hsides">
+            <caption>测试标题</caption>
+            <tr>
+                <th>姓名</th>
+                <th>编号</th>
+                <th>电话</th>
+            </tr>
+            <tr>
+                <td>"小野さん"</td>
+                <td>1001</td>
+                <td>12345</td>
+            </tr>
+        </table>
+        <ul>
+            <li>咖啡</li>
+            <li>茶</li>
+            <li>牛奶</li>
+        </ul>
+        <ol start="50">
+            <li>咖啡</li>
+            <li>牛奶</li>
+            <li>茶</li>
+        </ol>
+        <dl>
+            <dt>计算机</dt>
+            <dd>用来计算的仪器 ... ...</dd>
+        </dl>
+        <form action="https://www.bilibili.com/">
+            <small>我是会员：</small>
+            <input type="radio" checked="checked" name="Vip" value="is_vip" />
+            <br />
+            <small>我不是会员：</small>
+            <input type="radio" name="Vip" value="not_vip" />
+            <br />
+            用户：
+            <input type="text" name="user">
+            <br />
+            密码：
+            <input type="password" name="password">
+            <br />
+            <small>是否同意以下协议：</small>
+            <input type="checkbox" name="Agreement">
+            <br />
+            <select name="Manager">
+                <option value="Manager">Manager</option>
+                <option value="Visitor" selected="selected">Visitor</option>
+            </select>
+            描述信息：<textarea name="description">此处是描述信息</textarea>
+            <input type="button" value="假登录">
+            <input type="submit" value="真登录">
+            <fieldset>
+                <legend>カバン</legend>
+                お金：<input type="text" />
+                ダイヤモンド：<input type="text" />
+            </fieldset>
+            I have a bike:
+            <input type="checkbox" name="vehicle" value="Bike" checked="checked" />
+            <br />
+            I have a car: 
+            <input type="checkbox" name="vehicle" value="Car" />
+            <br />
+            I have an airplane: 
+            <input type="checkbox" name="vehicle" value="Airplane" />
+            <br />
+            <input type="submit" value="Submit" />
+            <input type="reset" value="重置">
+        </form>
+        <p>
+            本地图片
+            <img src="C:/Users/xigaiou/Desktop/お母さん.jpg" width="311" height="222" align ="left" alt="お母さん">
+        </p>
+        <p>
+            网络图片
+            <img src="https://gd-hbimg.huaban.com/0c634649532bb4b8fc36af981e9455d66cf2fcf32a2f6-EVEM6B_fw658/format/webp" 
+                width="200" height="300" align="middle" alt="阿莉塞と阿尔菲诺">
+        </p>
+        <hr/>
+        <address>
+            作者：<a href="mailto:xigaiou@zheshishaya.com">xigaiou</a>
+            友链：<a href="https://www.bilibili.com/">bilibili</a>
+        </address>
+    </body>
+</html>

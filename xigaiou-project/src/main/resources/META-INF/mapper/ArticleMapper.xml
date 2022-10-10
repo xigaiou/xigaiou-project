@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xigaiou.xigaiouproject.infrastructure.mapper.ArticleMapper">
+    <resultMap id="article" type="com.xigaiou.xigaiouproject.domain.entity.Article">
+        <result column="ID" property="id"></result>
+        <result column="AUTHOR" property="author"></result>
+        <result column="TITLE" property="title"></result>
+        <result column="CONTENT" property="content"></result>
+        <result column="TIME" property="time"></result>
+
+
+    </resultMap>
+    <select id="queryArticles" resultMap="article">
+        select * from article
+    </select>
+
+    <select id="getArticleById" resultType="com.xigaiou.xigaiouproject.domain.entity.Article">
+        select * from article where id = #{id}
+    </select>
+
+    <insert id="addArticle" parameterType="com.xigaiou.xigaiouproject.domain.entity.Article">
+        insert into article (id,author,title,content,time) values (#{id},#{author},#{title},#{content},#{time})
+    </insert>
+
+    <delete id="deleteArticleById" parameterType="String">
+        delete from article where id = #{id}
+    </delete>
+
+</mapper>

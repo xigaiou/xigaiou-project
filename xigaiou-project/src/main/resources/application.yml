@@ -1,0 +1,97 @@
+person:
+  id : ${random.uuid} # 随机uuid
+  name: xigaiou
+  email: 1@1.com
+  age: ${random.int} # 随机int
+  happy: true
+  birth: 2000/07/06
+  maps: {k1: v1,k2: v2}
+  lists:
+    - code
+    - girl
+    - music
+  cat:
+    name: 洛洛
+    age: 0
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@Localhost:1521:ORCL
+    username: xigaiou
+    password: abcd19711026
+    driverClassName: oracle.jdbc.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    druid:
+      #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+      #druid 数据源专有配置
+      #   Druid数据源配置
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1
+      #申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      testWhileIdle: true
+      #配置从连接池获取连接时，是否检查连接有效性，true每次都检查；false不检查。做了这个配置会降低性能。
+      testOnBorrow: false
+      #配置向连接池归还连接时，是否检查连接有效性，true每次都检查；false不检查。做了这个配置会降低性能。
+      testOnReturn: false
+      #打开PsCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+      filters: stat,wall,log4j
+      #合并多个DruidDatasource的监控数据
+      useGlobalDataSourceStat: true
+      #通过connectProperties属性来打开mergesql功能罗慢sQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500;
+      #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+      #则导入 log4j 依赖即可
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+
+  favicon:
+    enabled: false
+
+  mail:
+    username: 821110953@qq.com
+    password: qlnuphtkpglvbeif
+    host: smtp.qq.com
+    default-encoding: UTF-8
+  # qq需要配置ssl
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+
+
+  mvc:
+    view:
+      prefix: .html
+      suffix: .html
+    pathmatch:
+        matching-strategy: ant_path_matcher
+
+mybatis-plus: #mybatis-plus的配置一定不能和mabatis搞混，会导致xml映射出错
+  mapper-locations:
+    - classpath:META-INF/**/*.xml
+
+
+
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xigaiou.xigaiouproject.infrastructure.mapper.EmployeesMapper">
+
+    <resultMap id="emp" type="com.xigaiou.xigaiouproject.domain.entity.Employees">
+        <result column="EMPLOYEE_ID" property="employeeId"></result>
+        <result column="FIRST_NAME" property="firstName"></result>
+        <result column="LAST_NAME" property="lastName"></result>
+        <result column="EMAIL" property="email"></result>
+        <result column="PHONE_NUMBER" property="phoneNumber"></result>
+        <result column="HIRE_DATE" property="hireDate"></result>
+        <result column="JOB_ID" property="jobId"></result>
+        <result column="SALARY" property="salary"></result>
+        <result column="COMMISSION_PCT" property="commissionPct"></result>
+        <result column="MANAGER_ID" property="managerId"></result>
+        <result column="DEPARTMENT_ID" property="departmentId"></result>
+    </resultMap>
+
+    <select id="getEmployees" resultMap="emp">
+        select * from Employees
+    </select>
+
+    <insert id="save" parameterType="com.xigaiou.xigaiouproject.domain.entity.Employees">
+        insert into Employees(EMPLOYEE_ID, First_Name, Last_Name, Email, Phone_Number, Hire_Date,
+        Job_Id, Salary, Commission_Pct, Manager_Id, Department_Id)
+        values(#{employeeId}, #{firstName}, #{lastName}, #{email}, #{phoneNumber}, #{hireDate},
+                #{jobId}, #{salary}, #{commissionPct}, #{managerId}, #{departmentId})
+    </insert>
+
+    <select id="get" parameterType="String" resultMap="emp">
+        select * from Employees where employee_id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="String">
+        delete from employees where employee_id = #{id}
+    </delete>
+
+</mapper>
