@@ -6,4 +6,9 @@ public class IdValueValidator extends BaseStringValidator<IdValue>{
     public void initialize(IdValue idParam){
 
     }
+
+    @Override
+    protected boolean isValid(String value) {
+        return false;
+    }
 }

@@ -47,7 +47,7 @@ public class EmployeesApi {
      */
     @ApiOperation(value = "label", notes = "插入一条员工信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "employee", value = "员工", required = true, dataType = "Employees")
+            @ApiImplicitParam(name = "employee", value = "员工",dataTypeClass = Long.class, required = true, dataType = "Employees")
     })
     @PostMapping("/insertEmployee")
     public String insertEmployee(@RequestBody Employees employee){
@@ -62,7 +62,7 @@ public class EmployeesApi {
      */
     @ApiOperation(value = "label", notes = "输入员工id获取指定员工信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "员工id", required = true, dataType = "String")
+            @ApiImplicitParam(name = "id", value = "员工id",dataTypeClass = Long.class, required = true, dataType = "String")
     })
     @GetMapping("/getEmployee")
     public Employees getEmployee(@RequestParam String id){

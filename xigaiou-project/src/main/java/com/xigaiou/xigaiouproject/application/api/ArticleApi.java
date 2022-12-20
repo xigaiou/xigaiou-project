@@ -6,6 +6,7 @@ import com.xigaiou.xigaiouproject.domain.entity.ArticleRequest;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 富文本编辑器
+ * 文档存储器
  * @author 吴子敬
  * @date 2022-08-24
  */
@@ -67,7 +68,7 @@ public class ArticleApi {
      * @param id id
      */
     @ApiOperation(value = "label", notes = "根据id删除某文章")
-    @GetMapping("/deleteById")
+    @DeleteMapping("/deleteById")
     public String deleteArticleById(String id){
         articleAppService.deleteArticleById(id);
         return "delete success";

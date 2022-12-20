@@ -1,6 +1,6 @@
 package com.xigaiou.xigaiouproject.domain.myAnnotation.test2;
 
-@Cat(name="tom")
+@Cat2(name="tom")
 public class Acat {
     private String name;
 

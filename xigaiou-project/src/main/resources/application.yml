@@ -87,6 +87,20 @@ spring:
     pathmatch:
         matching-strategy: ant_path_matcher
 
+  activiti:
+    # false:默认值。activiti在启动时，会对比数据库表中保存的版本。如果没有表或者版本不匹配，将抛出异常
+    # true:activiti会对数据库中所有表进行更新操作，如果表不存在，则会自动创建
+    # create_drop:在activiti启动时创建表，在关闭时删除表（必须手动关闭引擎，才能删除表）
+    # drop-create:在activiti启动时删除原来的旧表，然后再创建新表（不需要手动关闭引擎）
+    # 线上一般使用false,开发中使用true
+    database-schema-update: true
+    # 自动部署验证设置:true-开启（默认）、false-关闭
+    check-process-definitions: false
+    # 开启历史表
+    db-history-used: true
+    # 历史记录存储等级
+    history-level: full
+
 mybatis-plus: #mybatis-plus的配置一定不能和mabatis搞混，会导致xml映射出错
   mapper-locations:
     - classpath:META-INF/**/*.xml

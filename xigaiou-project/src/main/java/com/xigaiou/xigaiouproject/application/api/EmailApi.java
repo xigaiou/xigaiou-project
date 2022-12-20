@@ -33,10 +33,10 @@ public class EmailApi {
      */
     @ApiOperation(value = "label", notes = "发送一条消息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "subject", value = "标题", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "text", value = "内容", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "to", value = "送达地址", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "from", value = "发送地址", required = true, dataType = "String")
+            @ApiImplicitParam(name = "subject", value = "标题",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "text", value = "内容",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "to", value = "送达地址",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "from", value = "发送地址",dataTypeClass = Long.class, required = true, dataType = "String")
     })
     @GetMapping("/sent")
     public String contextLoads(
@@ -60,11 +60,11 @@ public class EmailApi {
      */
     @ApiOperation(value = "label", notes = "发送一条带文件的消息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "subject", value = "标题", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "text", value = "内容", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "filePath", value = "文件路径", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "to", value = "送达地址", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "from", value = "发送地址", required = true, dataType = "String")
+            @ApiImplicitParam(name = "subject", value = "标题",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "text", value = "内容",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "filePath", value = "文件路径",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "to", value = "送达地址",dataTypeClass = Long.class, required = true, dataType = "String"),
+            @ApiImplicitParam(name = "from", value = "发送地址",dataTypeClass = Long.class, required = true, dataType = "String")
     })
     @GetMapping("/sentFile")
     public String contextAndFileLoads(@RequestParam("subject") String subject,

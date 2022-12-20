@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- 自动扫描包 -->
+    <context:component-scan base-package="com.xigaiou.mvc"/>
+
+    <!-- 配置Thymeleaf视图解析器 -->
+    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="order" value="1"/>
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="templateEngine">
+            <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
+                <property name="templateResolver">
+                    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+                        <!-- 视图前缀 -->
+                        <property name="prefix" value="/WEB-INF/templates/"/>
+                        <!-- 视图后缀 -->
+                        <property name="suffix" value=".html"/>
+                        <property name="templateMode" value="HTML5"/>
+                        <property name="characterEncoding" value="UTF-8" />
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <!-- <constructor-arg ref="utf8Charset"/> -->
+                <!-- <property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" /> -->
+                <property name="writeAcceptCharset" value="false" /><!-- 用于避免响应头过大 -->
+                <property name = "supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                        <!--                         <value>text/json;charset=UTF-8</value>    -->
+                    </list>
+                </property>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name = "supportedMediaTypes">
+                    <list>
+                        <value>text/json;charset=UTF-8</value>
+                    </list>
+                </property>
+
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--文件上传时必须通过文件解析器的解析才能将文件转换为MultipartFile对象-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> </bean>
+
+
+    <mvc:interceptors>
+        <!--拦截器-->
+        <ref bean="firstInterceptor"></ref>
+        <ref bean="secondInterceptor"></ref>
+        <!--<bean class="com.atguigu.interceptor.FirstInterceptor"> </bean>-->
+        <!--<ref bean="firstInterceptor"></ref>-->
+        <!-- 以上两种配置方式都是对DispatcherServlet所处理的所有的请求进行拦截 -->
+        <!--
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>拦截所有
+            <mvc:exclude-mapping path="/"/>不拦截主页面
+            <ref bean="firstInterceptor"></ref>
+        </mvc:interceptor>
+        -->
+    </mvc:interceptors>
+    <!--
+        以上配置方式可以通过ref或bean标签设置拦截器，通过mvc:mapping设置需要拦截的请求，
+        通过mvc:exclude-mapping设置需要排除的请求，即不需要拦截的请求
+    -->
+    <mvc:view-controller path="/" view-name="index"/>
+
+</beans>

@@ -15,13 +15,13 @@ public class Example2 {
         //动态生成Bean
         ClassPathScanningCandidateComponentProvider classPathScanningCandidateComponentProvider = new ClassPathScanningCandidateComponentProvider(false);
         //                                          添加一个包含过滤器
-        classPathScanningCandidateComponentProvider.addIncludeFilter(new AnnotationTypeFilter(Cat.class));
+        classPathScanningCandidateComponentProvider.addIncludeFilter(new AnnotationTypeFilter(Cat2.class));
         //                                                                                查找所有符合条件的BeanDefinition
         Set<BeanDefinition> beanDefinitions = classPathScanningCandidateComponentProvider.findCandidateComponents("com.xigaiou.xigaiouproject.domain.myAnnotation.test2");
         for(BeanDefinition beanDefinition : beanDefinitions){
             String beanClassName = beanDefinition.getBeanClassName();
             Class<?> clazz = Class.forName(beanClassName);
-            Cat cat = (Cat) clazz.getDeclaredAnnotation(Cat.class);
+            Cat2 cat = (Cat2) clazz.getDeclaredAnnotation(Cat2.class);
             String name = cat.name();
             Object object = clazz.getDeclaredConstructor(String.class).newInstance(name);
             System.out.println(object);

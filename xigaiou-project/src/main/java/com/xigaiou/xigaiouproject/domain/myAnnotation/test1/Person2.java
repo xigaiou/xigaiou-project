@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Person {
+public @interface Person2 {
     String name() default "";
     String sex() default "";
     int age() default 18;
