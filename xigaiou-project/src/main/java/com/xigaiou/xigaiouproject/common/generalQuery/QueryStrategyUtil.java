@@ -14,22 +14,25 @@ import java.util.Map;
  */
 @Component
 public class QueryStrategyUtil {
-    /**
+
+    /*
+
+    *//**
      * INST
-     */
+     *//*
     private static QueryStrategyUtil INST;
 
-    /**
+    *//**
      * 获取实例
      * @return INST
-     */
+     *//*
     public static QueryStrategyUtil getInstance(){
         return INST;
     }
 
-    /**
+    *//**
      * 通用查询-指定数据源
-     */
+     *//*
     @Getter
     private Map<String, GeneralSearchEmployeesInfoInterface> generalSearchEmployeesInfoMap;
 
@@ -39,4 +42,7 @@ public class QueryStrategyUtil {
             generalSearchEmployeesInfoMap.put(one.getDataSrc(), one);
         }
     }
+
+    */
+
 }

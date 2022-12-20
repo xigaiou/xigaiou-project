@@ -1,8 +1,5 @@
 package com.xigaiou.xigaiouproject.common.generalQuery;
 
-import com.xigaiou.xigaiouproject.common.gql.GeneralQueryFetchReq;
-
-import java.util.List;
 import java.util.Map;
 
 /**

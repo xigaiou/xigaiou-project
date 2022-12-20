@@ -5,13 +5,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Primary
 public class EmployeesInfoSceneConfRepositoryImpl extends
         ServiceImpl<EmployeesInfoSceneConfMapper, EmployeesInfoSceneConf> implements EmployeesInfoSceneConfRepository {
-    private final String FIELD_SCENE_CODE = "SCENE_CODE";
+    private final String FIELD_SCENE_CODE = "scene_code";
 
     public List<EmployeesInfoSceneConf> getSceneConfBySceneCode(String sceneCode){
         QueryWrapper<EmployeesInfoSceneConf> wrapper = new QueryWrapper<>();

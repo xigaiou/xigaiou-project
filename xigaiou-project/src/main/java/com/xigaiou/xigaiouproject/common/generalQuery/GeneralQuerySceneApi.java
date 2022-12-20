@@ -19,11 +19,13 @@ public class GeneralQuerySceneApi {
     @Autowired
     private GeneralQueryAppService generalQueryAppService;
 
+    private final String FIELD_BASE_INFO = "base-info";
+
     @GetMapping("/infos/_query-by-employee-id")
     public JSONObject queryInfosByEmployeeId(String employeeId){
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("EMPLOYEE_ID", employeeId);
-        JSONObject result = generalQueryAppService.execEmployeeInfoSceneQueryFetch("basic-info", paramMap);
+        JSONObject result = generalQueryAppService.execEmployeeInfoSceneQueryFetch(FIELD_BASE_INFO, paramMap);
         return result;
     }
 }

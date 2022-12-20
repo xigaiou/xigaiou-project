@@ -1,11 +1,15 @@
 package com.xigaiou.xigaiouproject.common.generalQuery;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
+@TableName("EMPLOYEES_INFO_SCENE_CONF")
 public class EmployeesInfoSceneConf{
 
     /**
@@ -47,10 +51,20 @@ public class EmployeesInfoSceneConf{
     /**
      * 版本更新详情
      */
-    private String versionUpdDesc;
+    private String versionUpDesc;
 
     /**
      * 单词返回数量限制
      */
     private int backCntLimit;
+
+    /**
+     * 创建人
+     */
+    private String crtBy;
+
+    /**
+     * 创建时间
+     */
+    private Date crtTime;
 }

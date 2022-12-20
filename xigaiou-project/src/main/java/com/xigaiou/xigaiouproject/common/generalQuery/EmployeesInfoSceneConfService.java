@@ -24,7 +24,7 @@ public class EmployeesInfoSceneConfService {
         }
         return list;
     }
-
+/*
     public JSONObject getOneEmployeeInfo(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
         JSONObject result = new JSONObject();
         list.stream().filter(e -> StringUtils.isNotBlank(e.getQryTeplt()))
@@ -35,4 +35,5 @@ public class EmployeesInfoSceneConfService {
                 });
         return result;
     }
+    */
 }
