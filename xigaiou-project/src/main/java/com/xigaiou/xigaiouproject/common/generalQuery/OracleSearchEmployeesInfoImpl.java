@@ -2,11 +2,15 @@ package com.xigaiou.xigaiouproject.common.generalQuery;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xigaiou.xigaiouproject.common.gqlSupport.JdbcExportUtil;
+import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class OracleSearchEmployeesInfoImpl implements GeneralSearchEmployeesInfoInterface<JSONObject>{
     /**
      * 数据源
@@ -15,6 +19,7 @@ public class OracleSearchEmployeesInfoImpl implements GeneralSearchEmployeesInfo
     /**
      * dataSource
      */
+    @Autowired
     private DataSource dataSource;
 
     public String getDataSrc(){

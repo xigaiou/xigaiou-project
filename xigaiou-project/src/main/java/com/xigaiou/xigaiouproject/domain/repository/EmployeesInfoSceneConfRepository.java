@@ -1,4 +1,6 @@
-package com.xigaiou.xigaiouproject.common.generalQuery;
+package com.xigaiou.xigaiouproject.domain.repository;
+
+import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
 
 import java.util.List;
 

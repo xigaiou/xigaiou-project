@@ -1,6 +1,9 @@
 package com.xigaiou.xigaiouproject.common.generalQuery;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +17,8 @@ import java.util.Map;
  */
 @Component
 public class QueryStrategyUtil {
+
+
     /**
      * INST
      */
@@ -30,13 +35,21 @@ public class QueryStrategyUtil {
     /**
      * 通用查询-指定数据源
      */
+
     @Getter
     private Map<String, GeneralSearchEmployeesInfoInterface> generalSearchEmployeesInfoMap;
 
     public QueryStrategyUtil(@Autowired GeneralSearchEmployeesInfoInterface[] generalSearchEmployeesInfos){
-        generalSearchEmployeesInfoMap = new HashMap<>(generalSearchEmployeesInfos.length);
+        generalSearchEmployeesInfoMap = new HashMap<>(1);
+//        generalSearchEmployeesInfoMap = new HashMap<>(generalSearchEmployeesInfos.length);
+        generalSearchEmployeesInfoMap.put(generalSearchEmployeesInfos[0].getDataSrc(), generalSearchEmployeesInfos[0]);
+        /*
         for(GeneralSearchEmployeesInfoInterface one : generalSearchEmployeesInfos){
             generalSearchEmployeesInfoMap.put(one.getDataSrc(), one);
         }
+        */
+        INST = this;
     }
+
+
 }

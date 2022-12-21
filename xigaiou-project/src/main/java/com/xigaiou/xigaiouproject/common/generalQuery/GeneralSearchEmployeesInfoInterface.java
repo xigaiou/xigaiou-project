@@ -1,8 +1,7 @@
 package com.xigaiou.xigaiouproject.common.generalQuery;
 
-import com.xigaiou.xigaiouproject.common.gql.GeneralQueryFetchReq;
+import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
 
-import java.util.List;
 import java.util.Map;
 
 /**
