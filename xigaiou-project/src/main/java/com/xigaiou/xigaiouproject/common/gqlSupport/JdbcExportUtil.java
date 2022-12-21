@@ -32,6 +32,7 @@ public final class JdbcExportUtil {
             String[] fieldNames = new String[columnCount];
 
             for(int i = 0; i < columnCount; i++){
+                //toCamelCase的作用是驼峰转换
                 fieldNames[i] = NameConvertUtil.toCamelCase(metaData.getColumnName(i + 1));
             }
 

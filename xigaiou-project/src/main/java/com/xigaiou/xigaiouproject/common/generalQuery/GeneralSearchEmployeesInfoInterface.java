@@ -1,5 +1,7 @@
 package com.xigaiou.xigaiouproject.common.generalQuery;
 
+import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
+
 import java.util.Map;
 
 /**

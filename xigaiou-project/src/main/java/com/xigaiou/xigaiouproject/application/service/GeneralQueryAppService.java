@@ -1,6 +1,8 @@
-package com.xigaiou.xigaiouproject.common.generalQuery;
+package com.xigaiou.xigaiouproject.application.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
+import com.xigaiou.xigaiouproject.domain.service.EmployeesInfoSceneConfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +15,11 @@ public class GeneralQueryAppService {
     private EmployeesInfoSceneConfService employeesInfoSceneConfService;
 
     public JSONObject execEmployeeInfoSceneQueryFetch(String sceneCode, Map<String, Object> paramMap){
-        //1.拿出场景配置(用的wrapper)
-        List<EmployeesInfoSceneConf> list = employeesInfoSceneConfService.getSceneConfBySceneCode(sceneCode);
+        //1.拿出场景配置(用的wrapper，走baseMapper)
+        List<EmployeesInfoSceneConf> list = employeesInfoSceneConfService.getSceneConfBySceneCode(sceneCode, paramMap);
 
-        //2.根据场景配置查询数据(用的JDBC)
-
-        /*
+        //3.根据场景配置查询数据(用的JDBC)
         JSONObject result = employeesInfoSceneConfService.getOneEmployeeInfo(list, paramMap);
-
-        */
-
-        return new JSONObject();
-
-
-
+        return result;
     }
 }

@@ -1,4 +1,4 @@
-package com.xigaiou.xigaiouproject.common.generalQuery;
+package com.xigaiou.xigaiouproject.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

@@ -1,9 +1,8 @@
-package com.xigaiou.xigaiouproject.common.generalQuery;
+package com.xigaiou.xigaiouproject.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.springframework.stereotype.Repository;
+import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
 
-@Repository
 public interface EmployeesInfoSceneConfMapper extends BaseMapper<EmployeesInfoSceneConf> {
 
 }
