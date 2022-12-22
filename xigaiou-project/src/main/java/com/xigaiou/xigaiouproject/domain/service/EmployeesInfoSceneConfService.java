@@ -16,12 +16,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 通用查询Service
+ * @author 西盖欧
+ * @date 2022-12-21
+ */
 @Service
 @Slf4j
 public class EmployeesInfoSceneConfService {
     @Autowired
     private EmployeesInfoSceneConfRepository repository;
 
+    /**
+     * 找到查询场景对应的查询模板
+     * @param sceneCode 场景代码
+     * @param paramMap 入参
+     * @return List<EmployeesInfoSceneConf>
+     */
     public List<EmployeesInfoSceneConf> getSceneConfBySceneCode(String sceneCode, Map<String, Object> paramMap){
         List<EmployeesInfoSceneConf> list = repository.getSceneConfBySceneCode(sceneCode);
         if(list.size() < 1){
@@ -32,32 +43,51 @@ public class EmployeesInfoSceneConfService {
         return list;
     }
 
-    protected List<EmployeesInfoSceneConf> handleResult(List<EmployeesInfoSceneConf> sceneConfList,
-                                                        Map<String, Object> paramMap){
-        sceneConfList.stream().forEach(e -> {
+    /**
+     * 模板替换
+     * 将查询模板替换为真正的入参
+     * @param sceneConfList 场景配置list
+     * @param paramMap      入参
+     */
+    protected void handleResult(List<EmployeesInfoSceneConf> sceneConfList,
+                                Map<String, Object> paramMap){
+        sceneConfList.forEach(e -> {
             String qryTeplt = QueryUtils.parseQuery(e.getQryTeplt(), paramMap, true);
             e.setQryTeplt(qryTeplt);
         });
-        return sceneConfList;
     }
 
+    /**
+     * 根据SQL语句查询oracle数据库
+     * 返回为单条
+     * @param list 场景配置list
+     * @param paramMap 入参
+     * @return JSONObject
+     */
     public JSONObject execFetch(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
         JSONObject result = new JSONObject();
         //stream.filter一般适用于list集合,主要作用就是模拟sql查询，从集合中查询想要的数据
         list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt()))
                 .forEach(conf ->{
-                    GeneralSearchEmployeesInfoInterface generalSearchEmployeesInfo =
+                    GeneralSearchEmployeesInfoInterface<JSONObject> generalSearchEmployeesInfo =
                             QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
                     result.putAll((JSONObject) JSON.toJSON(generalSearchEmployeesInfo.fetchOne(conf, paramMap)));
                 });
         return result;
     }
 
+    /**
+     * 根据SQL语句查询oracle数据库
+     * 返回为多条
+     * @param list 场景配置list
+     * @param paramMap 入参
+     * @return List<JSONObject>
+     */
     public List<JSONObject> execBatchFetch(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
         List<JSONObject> result = new ArrayList<>(list.get(0).getBackCntLimit());
         list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt()))
                 .forEach(conf ->{
-                    GeneralSearchEmployeesInfoInterface generalSearchEmployeesInfo =
+                    GeneralSearchEmployeesInfoInterface<JSONObject> generalSearchEmployeesInfo =
                             QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
                     result.addAll( generalSearchEmployeesInfo.fetchList(conf, paramMap));
                 });
