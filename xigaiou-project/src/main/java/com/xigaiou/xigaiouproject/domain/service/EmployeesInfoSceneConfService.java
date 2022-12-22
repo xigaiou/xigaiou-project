@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class EmployeesInfoSceneConfService {
         return sceneConfList;
     }
 
-    public JSONObject getOneEmployeeInfo(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
+    public JSONObject execFetch(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
         JSONObject result = new JSONObject();
         //stream.filter一般适用于list集合,主要作用就是模拟sql查询，从集合中查询想要的数据
         list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt()))
@@ -48,6 +49,17 @@ public class EmployeesInfoSceneConfService {
                     GeneralSearchEmployeesInfoInterface generalSearchEmployeesInfo =
                             QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
                     result.putAll((JSONObject) JSON.toJSON(generalSearchEmployeesInfo.fetchOne(conf, paramMap)));
+                });
+        return result;
+    }
+
+    public List<JSONObject> execBatchFetch(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
+        List<JSONObject> result = new ArrayList<>(list.get(0).getBackCntLimit());
+        list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt()))
+                .forEach(conf ->{
+                    GeneralSearchEmployeesInfoInterface generalSearchEmployeesInfo =
+                            QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
+                    result.addAll( generalSearchEmployeesInfo.fetchList(conf, paramMap));
                 });
         return result;
     }

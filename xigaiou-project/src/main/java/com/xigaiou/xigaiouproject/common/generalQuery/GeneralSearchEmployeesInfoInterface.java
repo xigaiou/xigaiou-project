@@ -2,6 +2,7 @@ package com.xigaiou.xigaiouproject.common.generalQuery;
 
 import com.xigaiou.xigaiouproject.domain.entity.EmployeesInfoSceneConf;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,4 +14,6 @@ public interface GeneralSearchEmployeesInfoInterface<T> {
     String getDataSrc();
 
     T fetchOne(EmployeesInfoSceneConf employeesInfoSceneConf, Map<String, Object> map);
+
+    List<T> fetchList(EmployeesInfoSceneConf employeesInfoSceneConf, Map<String, Object> map);
 }

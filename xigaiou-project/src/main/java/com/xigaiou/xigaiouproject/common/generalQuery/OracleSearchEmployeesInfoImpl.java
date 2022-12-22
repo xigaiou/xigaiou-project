@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -43,5 +45,24 @@ public class OracleSearchEmployeesInfoImpl implements GeneralSearchEmployeesInfo
             e.printStackTrace();
         }
         return resultMap.get("result");
+    }
+
+    public List<JSONObject> fetchList(EmployeesInfoSceneConf employeesInfoSceneConf, Map<String, Object> map){
+        String qryTeplt = employeesInfoSceneConf.getQryTeplt();
+        List<JSONObject> resultList = new ArrayList<>();
+        try{
+            JdbcExportUtil.executeSelectBatch(dataSource, qryTeplt, new Object[0], (fieldNames, resultSet) -> {
+                JSONObject row = new JSONObject(fieldNames.length);
+                for(int i = 0; i < fieldNames.length; ++i){
+                    Object value = resultSet.getObject(i + 1);
+                    row.put(fieldNames[i], value);
+                }
+                resultList.add(row);
+                return 1;
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return resultList;
     }
 }
