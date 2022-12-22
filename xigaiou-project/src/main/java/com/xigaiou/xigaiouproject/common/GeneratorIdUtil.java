@@ -10,7 +10,6 @@ import java.net.InetAddress;
  */
 @Slf4j
 public class GeneratorIdUtil {
-
     private static Logger logger = LoggerFactory.getLogger(GeneratorIdUtil.class);
 
     /**
