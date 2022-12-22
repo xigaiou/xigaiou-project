@@ -1,9 +1,7 @@
 package com.xigaiou.xigaiouproject.common.generalQuery;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.alibaba.fastjson.JSONObject;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,11 +35,11 @@ public class QueryStrategyUtil {
      */
 
     @Getter
-    private Map<String, GeneralSearchEmployeesInfoInterface> generalSearchEmployeesInfoMap;
+    private final Map<String, GeneralSearchEmployeesInfoInterface<JSONObject>> generalSearchEmployeesInfoMap;
 
-    public QueryStrategyUtil(@Autowired GeneralSearchEmployeesInfoInterface[] generalSearchEmployeesInfos){
+    public QueryStrategyUtil(@Autowired GeneralSearchEmployeesInfoInterface<JSONObject>[] generalSearchEmployeesInfos){
         generalSearchEmployeesInfoMap = new HashMap<>(1);
-//        generalSearchEmployeesInfoMap = new HashMap<>(generalSearchEmployeesInfos.length);
+        //generalSearchEmployeesInfoMap = new HashMap<>(generalSearchEmployeesInfos.length);
         generalSearchEmployeesInfoMap.put(generalSearchEmployeesInfos[0].getDataSrc(), generalSearchEmployeesInfos[0]);
         /*
         for(GeneralSearchEmployeesInfoInterface one : generalSearchEmployeesInfos){

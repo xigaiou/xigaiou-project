@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 通用查询AppService
+ * @author 西盖欧
+ * @date 2022-12-21
+ */
 @Service
 public class GeneralQueryAppService {
     @Autowired
@@ -25,8 +30,7 @@ public class GeneralQueryAppService {
         List<EmployeesInfoSceneConf> list = employeesInfoSceneConfService.getSceneConfBySceneCode(sceneCode, paramMap);
 
         //2.根据场景配置查询数据(用的JDBC)
-        JSONObject result = employeesInfoSceneConfService.execFetch(list, paramMap);
-        return result;
+        return employeesInfoSceneConfService.execFetch(list, paramMap);
     }
 
     /**
@@ -40,7 +44,6 @@ public class GeneralQueryAppService {
         List<EmployeesInfoSceneConf> list = employeesInfoSceneConfService.getSceneConfBySceneCode(sceneCode, paramMap);
 
         //2.根据场景配置查询数据(用的JDBC)
-        List<JSONObject> result = employeesInfoSceneConfService.execBatchFetch(list, paramMap);
-        return result;
+        return employeesInfoSceneConfService.execBatchFetch(list, paramMap);
     }
 }
