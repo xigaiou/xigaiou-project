@@ -49,8 +49,7 @@ public class EmployeesInfoSceneConfService {
      * @param sceneConfList 场景配置list
      * @param paramMap      入参
      */
-    protected void handleResult(List<EmployeesInfoSceneConf> sceneConfList,
-                                Map<String, Object> paramMap){
+    protected void handleResult(List<EmployeesInfoSceneConf> sceneConfList, Map<String, Object> paramMap){
         sceneConfList.forEach(e -> {
             String qryTeplt = QueryUtils.parseQuery(e.getQryTeplt(), paramMap, true);
             e.setQryTeplt(qryTeplt);
@@ -66,13 +65,11 @@ public class EmployeesInfoSceneConfService {
      */
     public JSONObject execFetch(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
         JSONObject result = new JSONObject();
-        //stream.filter一般适用于list集合,主要作用就是模拟sql查询，从集合中查询想要的数据
-        list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt()))
-                .forEach(conf ->{
-                    GeneralSearchEmployeesInfoInterface<JSONObject> generalSearchEmployeesInfo =
-                            QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
-                    result.putAll((JSONObject) JSON.toJSON(generalSearchEmployeesInfo.fetchOne(conf, paramMap)));
-                });
+        list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt())).forEach(conf ->{
+            GeneralSearchEmployeesInfoInterface<JSONObject> generalSearchEmployeesInfo =
+                    QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
+            result.putAll((JSONObject) JSON.toJSON(generalSearchEmployeesInfo.fetchOne(conf, paramMap)));
+        });
         return result;
     }
 
@@ -85,12 +82,11 @@ public class EmployeesInfoSceneConfService {
      */
     public List<JSONObject> execBatchFetch(List<EmployeesInfoSceneConf> list, Map<String, Object> paramMap){
         List<JSONObject> result = new ArrayList<>(list.get(0).getBackCntLimit());
-        list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt()))
-                .forEach(conf ->{
-                    GeneralSearchEmployeesInfoInterface<JSONObject> generalSearchEmployeesInfo =
-                            QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
-                    result.addAll( generalSearchEmployeesInfo.fetchList(conf, paramMap));
-                });
+        list.stream().filter(conf -> StringUtils.isNotBlank(conf.getQryTeplt())).forEach(conf ->{
+            GeneralSearchEmployeesInfoInterface<JSONObject> generalSearchEmployeesInfo =
+                    QueryStrategyUtil.getInstance().getGeneralSearchEmployeesInfoMap().get(conf.getDataSrc());
+            result.addAll( generalSearchEmployeesInfo.fetchList(conf, paramMap));
+        });
         return result;
     }
 }

@@ -7,11 +7,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * SQL语句转换
+ * 查询模板替换
+ * @author 西盖欧
+ * @date 2022-12-21
  */
 public class QueryUtils {
+    /**
+     *  \$ 代表匹配$
+     *  \w+ 字符串
+     *  ()? 可选
+     *  \| 或
+     *  [^ ] 里面的字符一个都没有
+     *  : 和 任意空字符 和 [
+     */
     private static final Pattern REGEX_VAR_NAME = Pattern.compile("\\$\\w+(\\|[^:\\s\\[]+)?");
 
+    /**
+     * 这个用不到，是用于匹配客户列表筛选项的{AND CUST_ID:$custId}?
+     */
     private static final Pattern REGEX_OPTION_SEG = Pattern.compile("\\{([^?]+)}\\?");
 
     public static String parseQuery(String sql, Map<String, Object> paramMap, boolean setDefaultValue){

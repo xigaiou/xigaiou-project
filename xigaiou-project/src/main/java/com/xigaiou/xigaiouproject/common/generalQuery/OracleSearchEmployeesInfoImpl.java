@@ -12,6 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * oracle数据库查询
+ * @author 西盖欧
+ * @date 2022-12-21
+ */
 @Service
 public class OracleSearchEmployeesInfoImpl implements GeneralSearchEmployeesInfoInterface<JSONObject>{
     /**
@@ -32,7 +37,7 @@ public class OracleSearchEmployeesInfoImpl implements GeneralSearchEmployeesInfo
         String qryTeplt = employeesInfoSceneConf.getQryTeplt();
         Map<String, JSONObject> resultMap = new HashMap<>();
         try{
-            JdbcExportUtil.executeSelect(dataSource, 1, qryTeplt, new Object[0], (fieldNames, resultSet) -> {
+            JdbcExportUtil.executeSelect(dataSource, true, qryTeplt, new Object[0], (fieldNames, resultSet) -> {
                 JSONObject row = new JSONObject(fieldNames.length);
                 for(int i = 0; i < fieldNames.length; ++i){
                     Object value = resultSet.getObject(i + 1);
@@ -51,7 +56,7 @@ public class OracleSearchEmployeesInfoImpl implements GeneralSearchEmployeesInfo
         String qryTeplt = employeesInfoSceneConf.getQryTeplt();
         List<JSONObject> resultList = new ArrayList<>();
         try{
-            JdbcExportUtil.executeSelectBatch(dataSource, qryTeplt, new Object[0], (fieldNames, resultSet) -> {
+            JdbcExportUtil.executeSelect(dataSource, false, qryTeplt, new Object[0], (fieldNames, resultSet) -> {
                 JSONObject row = new JSONObject(fieldNames.length);
                 for(int i = 0; i < fieldNames.length; ++i){
                     Object value = resultSet.getObject(i + 1);

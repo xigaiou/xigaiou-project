@@ -19,7 +19,6 @@ public class EmployeesInfoSceneConfRepositoryImpl extends
     public List<EmployeesInfoSceneConf> getSceneConfBySceneCode(String sceneCode){
         QueryWrapper<EmployeesInfoSceneConf> wrapper = new QueryWrapper<>();
         wrapper.eq(FIELD_SCENE_CODE, sceneCode);
-        List<EmployeesInfoSceneConf> list = baseMapper.selectList(wrapper);
-        return list;
+        return baseMapper.selectList(wrapper);
     }
 }

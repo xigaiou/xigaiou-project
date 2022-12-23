@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * 策略模式工具类
- * @author xigaiou
+ * @author 西盖欧
  * @date 2022-12-05
  */
 @Component
